@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @posts = @group.posts
   end
 
   def edit
@@ -21,9 +22,7 @@ class GroupsController < ApplicationController
     @group.user = current_user
 
     if @group.save
-
       redirect_to groups_path
-
     else
       render :new
     end
